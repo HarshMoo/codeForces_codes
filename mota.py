@@ -35,6 +35,8 @@ def merge_sort(arr):
 
     return merge_and_sort(left,right)
 
-arr = [5,6,8,2,3]
 
-print(merge_sort(arr))
+# test case:
+# arr = [5,6,8,2,3]
+
+# print(merge_sort(arr))
