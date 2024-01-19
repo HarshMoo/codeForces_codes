@@ -1,32 +1,40 @@
+def merge_and_sort(arr1,arr2):
+
+    i = 0
+    j = 0
+
+    ans = []
+
+    while i<len(arr1) and j<len(arr2):
+
+        if(arr1[i]<arr2[j]):
+            ans.append(arr1[i])
+            i+=1
+
+        else:
+            ans.append(arr2[j])
+            j+=1
+
+    ans.extend(arr1[i:])
+    ans.extend(arr2[j:])
+
+    return ans
+
 def merge_sort(arr):
-    if len(arr) > 1:
-        # Divide the array into two halves
-        mid = len(arr) // 2
-        left_half = arr[:mid]
-        right_half = arr[mid:]
 
-        # Recursively sort each half
-        merge_sort(left_half)
-        merge_sort(right_half)
+    mid = len(arr)//2
 
-        # Merge the sorted halves
-        i = j = k = 0
-        while i < len(left_half) and j < len(right_half):
-            if left_half[i] < right_half[j]:
-                arr[k] = left_half[i]
-                i += 1
-            else:
-                arr[k] = right_half[j]
-                j += 1
-            k += 1
+    left = arr[mid:]
+    right = arr[:mid]
 
-        # Check for any remaining elements in both halves
-        while i < len(left_half):
-            arr[k] = left_half[i]
-            i += 1
-            k += 1
+    if(len(arr) == 1):
+        return arr
+    
+    left = merge_sort(left)
+    right = merge_sort(right)
 
-        while j < len(right_half):
-            arr[k] = right_half[j]
-            j += 1
-            k += 1
+    return merge_and_sort(left,right)
+
+arr = [5,6,8,2,3]
+
+print(merge_sort(arr))
