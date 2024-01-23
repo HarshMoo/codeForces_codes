@@ -1,5 +1,14 @@
-def hello(name:str):
+def is_cycle(l1):
 
-    print("hello "+name)
+    fast = l1.head.next
+    slow = l1.head.next
 
-print(hello("world"))
+    while fast != None and slow != None:
+
+        fast = fast.next.next
+        slow = slow.next
+
+        if(fast == slow):
+            return True
+        
+    return False
