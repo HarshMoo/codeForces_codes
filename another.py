@@ -1,14 +1,32 @@
-def is_cycle(l1):
+class Node:
 
-    fast = l1.head.next
-    slow = l1.head.next
+    def __init__(self,data = None):
+        self.data = data
+        self.next = None
 
-    while fast != None and slow != None:
+class LinkedList:
 
-        fast = fast.next.next
-        slow = slow.next
+    def __init__(self):
 
-        if(fast == slow):
-            return True
-        
-    return False
+        self.head = Node()
+
+    def append(self,elem):
+
+        cur = self.head
+
+        while cur.next != None:
+            cur = cur.next
+
+        cur.next = Node(elem)
+
+    def display(self):
+        ans = []
+
+        cur = self.head
+
+        while cur.next != None:
+            cur = cur.next
+
+            ans.append(cur.data)
+
+        return ans
